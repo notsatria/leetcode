@@ -12,30 +12,14 @@ var firstPalindrome = function(words) {
 };
 
 function isPalindrome(inputString) {
+    const len = inputString.length
 
-    if (inputString.length === 1 ) {
-        return true;
-    }
-    
-    var list = []
-    
-    for (var i = 0; i < inputString.length; i++) {
-        list.push(inputString[i])
-    }
-    
-    var reversedList = list.slice().reverse()
-    
-    if (reversedList.length == list.length) {
-         
-    for (var i = 0; i < reversedList.length; i++) {
-            if (reversedList[i] !== list[i]) {
+    for (var i = 0; i < Math.floor(len/2); i++) {
+            if (inputString[i] !== inputString[len - 1 - i]) {
                 return false
             } 
         
         }
-    
-    }
-    
     
     return true
 }
