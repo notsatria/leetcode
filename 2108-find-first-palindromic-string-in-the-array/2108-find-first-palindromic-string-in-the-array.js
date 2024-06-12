@@ -3,14 +3,12 @@
  * @return {string}
  */
 var firstPalindrome = function(words) {
-    var result = ""
     for (var i = 0; i < words.length; i++) {
         if (isPalindrome(words[i])) {
-            result = words[i];
-            break;
+            return words[i];
         } 
     }
-    return result;
+    return "";
 };
 
 function isPalindrome(inputString) {
