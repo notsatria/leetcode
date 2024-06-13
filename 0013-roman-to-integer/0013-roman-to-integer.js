@@ -14,20 +14,13 @@ var romanToInt = function(s) {
     }
     
     var result = 0
-    var temp = 0
     
     for (var i = 0; i < s.length; i++) {
-        // console.log(result)
-        console.log("result before: " + result)
-        if (roman[s[i]] < roman[s[i + 1]]) {
-            result = result + roman[s[i + 1]] - roman[s[i]]
-            console.log("result inside temp: " + result)
-            i++
+        if (i < s.length -1 && roman[s[i]] < roman[s[i + 1]]) {
+            result -= roman[s[i]]
         } else {
-            result = result + roman[s[i]]
+            result += roman[s[i]]
         }
-        console.log("result after: " + result)
-
     }
     
     
