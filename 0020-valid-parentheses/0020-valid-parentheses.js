@@ -4,37 +4,30 @@
  */
 var isValid = function(s) {
    const bracketStack = new Stack()
+   const brackets = {
+        '(': ')',
+        '{': '}',
+        '[': ']'
+    };
    
    for (let i = 0; i < s.length; i++) {
        const bracket = s[i]
-       if (bracket === "(" || bracket === "{" || bracket === "[") {
+       
+       if (brackets[bracket]) {
+           // jika bracket adalah opening
            bracketStack.push(bracket)
-       } else if (bracket === ")") {
-           if (bracketStack.peek() === "(") {
-               bracketStack.pop()
-           } else {
-               return false
-           }
-       } else if (bracket === "}") {
-           if (bracketStack.peek() === "{") {
-               bracketStack.pop()
-           } else {
-               return false
-           }
-       } else if (bracket === "]") {
-           if (bracketStack.peek() === "[") {
-               bracketStack.pop()
-           } else {
+       } else {
+           // jika bracket adalah penutup
+           // check apakah last item di dalam stack adalah pembuka dari penutup
+           const lastBracket = bracketStack.pop()
+           console.log(lastBracket)
+           if (brackets[lastBracket] !== bracket) {
                return false
            }
        }
    }
 
-    if (bracketStack.size() === 0) {
-        return true
-    } else {
-        return false
-    }
+    return bracketStack.isEmpty()
 };
 
 class Stack {
@@ -50,7 +43,7 @@ class Stack {
         if (this.items.isEmpty) {
             return "The stack is empty"
         }
-        this.items.pop()
+        return this.items.pop()
     }
     
     size() {
@@ -62,6 +55,10 @@ class Stack {
             return "The stack is empty"
         }
         return this.items[this.items.length - 1]
+    }
+    
+    isEmpty() {
+        return this.items.length === 0
     }
     
     print() {
