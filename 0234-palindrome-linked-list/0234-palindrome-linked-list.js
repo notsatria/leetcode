@@ -10,22 +10,23 @@
  * @return {boolean}
  */
 var isPalindrome = function(head) {
-    let current = head;
     const list = [];
-    let pointer = 1;
     
-    while (current !== null) {
-        console.log(current.val)
-        list.push(current.val)
-        current = current.next
+    while (head !== null) {
+        console.log(head.val)
+        list.push(head.val)
+        head = head.next
     }
     
-    for (let i = 0; i < Math.floor(list.length / 2); i++) {
-        if (list[i] === list[list.length - pointer]) {
-            pointer++
-        } else {
-            return false;
+    let left = 0;
+    let right = list.length - 1
+    
+    while (left < right) {
+        if (list[left] !== list[right]) {
+            return false
         }
+        left++
+        right--
     }
     
     return true
