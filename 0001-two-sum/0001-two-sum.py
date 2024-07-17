@@ -3,11 +3,10 @@ class Solution:
         hashMap = {}
         
         for i, num in enumerate(nums):
-            hashMap[i] = num
-            # print(hashMap)
             pointer = target - num
-            for key, value in hashMap.items():
-                if value == pointer and i != key:
-                    return [i, key]
+            if pointer in hashMap:
+                return [i, hashMap[pointer]]
+            else:
+                hashMap[num] = i
             
         
