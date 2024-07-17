@@ -1,13 +1,14 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        pairs = {}
+        left, right = 0, len(numbers) - 1
         
-        for i, num in enumerate(numbers):
-            pointer = target - num
+        while left < right:
+            sumOf = numbers[left] + numbers[right]
             
-            if pointer in pairs:
-                return [pairs[pointer], i+1] 
-            pairs[num] = i + 1
-        
-        # print(pairs)
+            if sumOf < target:
+                left += 1
+            elif sumOf > target:
+                right -= 1
+            else:
+                return [left + 1, right + 1]
         
