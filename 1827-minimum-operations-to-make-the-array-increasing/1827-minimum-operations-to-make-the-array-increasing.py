@@ -4,11 +4,9 @@ class Solution:
 
         for i in range(1, len(nums)):
             if nums[i] <= nums[i - 1]:
-                val = max(nums[i - 1] + 1, nums[i])
-                if nums[i] < val:
-                    operation += val - nums[i]
-                    nums[i] = val
-                    print(operation)
+                required_val = nums[i - 1] + 1
+                operation += required_val - nums[i]
+                nums[i] = required_val
             
         print(nums)
         return operation
