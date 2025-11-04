@@ -1,5 +1,6 @@
 class Solution {
     fun containsDuplicate(nums: IntArray): Boolean {
+        nums.sorted()
         val existing = hashMapOf<Int, Int>()
         for (item in nums) {
             if (existing.containsKey(item)) {
