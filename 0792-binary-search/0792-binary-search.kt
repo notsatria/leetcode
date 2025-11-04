@@ -19,7 +19,7 @@
 
     Lalu dari kanan itu bisa dibagi 2 lagi, 
  */
-
+import kotlin.math.floor
 
 class Solution {
     fun search(nums: IntArray, target: Int): Int {
@@ -29,31 +29,15 @@ class Solution {
         }
         var leftIndex = 0
         var rightIndex = (nums.size - 1)
-        var mid = ((rightIndex - leftIndex) / 2).toInt()
 
-        while (leftIndex < rightIndex) {
-            println("Left index 1: $leftIndex")
-            println("Right index 1: $rightIndex")
-            println("Mid 1: $mid")
-               // ambil kanan
+        while (leftIndex <= rightIndex) {
+            var mid = (rightIndex + leftIndex) / 2
             if (target > nums[mid]) {
                 leftIndex = mid + 1
-                mid = ((rightIndex - leftIndex) / 2) + leftIndex
-                if (target == nums[mid]) {
-                    return mid
-                }
-                println("Left index 2: $leftIndex")
-                println("Right index 2: $rightIndex")
-                println("Mid 2: $mid")
             } else if (target == nums[mid]) {
                return mid
-            // ambil kiri
             } else {
-                 rightIndex = mid
-                mid = (rightIndex - leftIndex) / 2
-                println("Left index 3: $leftIndex")
-                println("Right index 3: $rightIndex")
-                println("Mid 3: $mid")
+                rightIndex = mid - 1
             }
         }
 
