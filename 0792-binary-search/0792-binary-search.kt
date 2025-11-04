@@ -20,7 +20,6 @@
     Lalu dari kanan itu bisa dibagi 2 lagi, 
  */
 
-import kotlin.math.ceil
 
 class Solution {
     fun search(nums: IntArray, target: Int): Int {
@@ -56,24 +55,6 @@ class Solution {
                 println("Right index 3: $rightIndex")
                 println("Mid 3: $mid")
             }
-            // // ambil kanan
-            // if (target > nums[mid]) {
-            //     leftIndex = mid + 1
-            //     mid = ((rightIndex - leftIndex) / 2) + leftIndex
-            //     println("Left index 2: $leftIndex")
-            //     println("Right index 2: $rightIndex")
-            //     println("Mid 2: $mid")
-            // // ambil kiri
-            // } else if (target < nums[mid]) {
-            //     rightIndex = mid
-            //     mid = (rightIndex - leftIndex) / 2
-            //     println("Left index 3: $leftIndex")
-            //     println("Right index 3: $rightIndex")
-            //     println("Mid 3: $mid")
-            // } else {
-            //     println("Mid: $mid")
-            //     return mid
-            // }
         }
 
         return -1
