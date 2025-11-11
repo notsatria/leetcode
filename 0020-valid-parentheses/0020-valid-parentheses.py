@@ -1,20 +1,23 @@
+# Bikin hasmap dengan key = closing bracket dan value open bracket
+# Make a list
+# loop trough s, on each char, push to the list, 
+
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        pairs = {
-            "(": ")",
-            "{": "}",
-            "[": "]"
+        dic = {
+            "}" : "{",
+            "]" : "[",
+            ")" : "("
         }
-        if len(s) == 1:
-            return False
-        
-        for bracket in s:
-            if bracket == "(" or bracket == "[" or bracket == "{":
-                stack.append(bracket)
-            else:
-                if not stack or bracket != pairs[stack.pop()]:
-                    return False
+        for char in s:
+            if char not in dic:
+                stack.append(char)
+                continue
+            if not stack or stack[-1] != dic[char]:
+                return False
+            stack.pop()
         
         return len(stack) == 0
-            
+
+        
